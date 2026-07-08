@@ -2,9 +2,9 @@
 
 The wordfinder metaphysical measurement tool, using multihashing. Use it during hypothesis or research to find preliminary numbers to test.
 
-It works like tarot in ways, that you should not ask the same question twice in a row with same intention, as it could land differently the 2nd time.
+It works like tarot in ways, that you should not ask the same question twice in a row with same intention if it is emotionally based, as it could land differently the 2nd time.
 
-Don't use it to check on values already determined such as scientific numbers. The reliability is best when taken in first shot.
+You can ask the same question with same intention to help verify numeric or other readings.
 
 Set the Focus Phrase, then choose Symbol, Number or Letters. Then pick the half of the range that feels stronger energetically, and drilldown to your answer.
 
@@ -17,3 +17,7 @@ LICENSE: MIT
 https://www.deviantart.com/anthro-shaman
 
 https://ko-fi.com/anthroteacher/shop
+
+https://www.youtube.com/@Aumaroo-Starwalker
+
+https://www.facebook.com/AnthroTeacher
