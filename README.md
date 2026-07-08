@@ -21,3 +21,5 @@ https://ko-fi.com/anthroteacher/shop
 https://www.youtube.com/@Aumaroo-Starwalker
 
 https://www.facebook.com/AnthroTeacher
+
+<img width="749" height="719" alt="WordFinder" src="https://github.com/user-attachments/assets/33dc92de-1e73-4683-89cc-320cefab3c25" />
