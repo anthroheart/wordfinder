@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- ===== START: Meta Tags for Social Sharing ===== -->
+
+    <!-- Basic Meta Info -->
+    <meta
+      name="description"
+      content="Discover words hidden within SHA-256 hashes using a multi-level, repetitive hashing process based on a focus phrase. Interactive web tool."
+    />
+    <meta name="author" content="Your Name or Website Name" />
+    <!-- Optional: Add your name/site -->
+
+    <!-- Open Graph / Facebook / Telegram / WhatsApp etc. -->
+    <meta property="og:title" content="Web Word Finder - MultiHash (SHA-256)" />
+    <meta
+      property="og:description"
+      content="Discover words hidden within SHA-256 hashes using a multi-level, repetitive hashing process based on a focus phrase. Interactive web tool."
+    />
+    <meta property="og:type" content="website" />
+    <!-- IMPORTANT: Replace with the ACTUAL LIVE URL where this tool is hosted -->
+    <meta
+      property="og:url"
+      content="https://wordfinder.anthroentertainment.com/index.html"
+    />
+    <!-- IMPORTANT: Replace with a URL to an image for the preview (e.g., 1200x630px) -->
+    <meta
+      property="og:image"
+      content="https://wordfinder.anthroentertainment.com/preview-image.png"
+    />
+    <meta
+      property="og:image:alt"
+      content="Screenshot or Logo for the Web Word Finder Tool"
+    />
+    <meta property="og:site_name" content="Web Word Finder Tool" />
+    <!-- Optional: Name of your site -->
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <!-- Use "summary" if image is smaller/less important -->
+    <!-- IMPORTANT: Replace with the ACTUAL LIVE URL -->
+    <meta
+      name="twitter:url"
+      content="https://wordfinder.anthroentertainment.com/index.html"
+    />
+    <meta
+      name="twitter:title"
+      content="Web Word Finder - MultiHash (SHA-256)"
+    />
+    <meta
+      name="twitter:description"
+      content="Discover words hidden within SHA-256 hashes using a multi-level, repetitive hashing process based on a focus phrase."
+    />
+    <!-- IMPORTANT: Replace with the URL to the preview image -->
+    <meta
+      name="twitter:image"
+      content="https://wordfinder.anthroentertainment.com/preview-image.png"
+    />
+    <meta
+      name="twitter:image:alt"
+      content="Screenshot or Logo for the Web Word Finder Tool"
+    />
+    <!-- Optional: Twitter handle of the site/creator -->
+    <!-- <meta name="twitter:site" content="@YourTwitterHandle"> -->
+    <!-- <meta name="twitter:creator" content="@YourPersonalTwitterHandle"> -->
+
+    <!-- ===== END: Meta Tags for Social Sharing ===== -->
+
+    <title>Web Word Finder - MultiHash (SHA-256)</title>
+    <link rel="stylesheet" href="style.css" />
+    <!-- Include Comic Neue from Google Fonts as a fallback for Comic Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1 id="appTitle">Web Word Finder w/MultiHashing</h1>
+
+      <!-- Input Section -->
+      <div class="input-section card">
+        <label for="focusPhrase">Focus Phrase:</label>
+        <textarea id="focusPhrase" rows="6"></textarea>
+
+        <div class="config-section">
+          <div>
+            <label for="repetitions">Repetitions per Level:</label>
+            <input
+              type="number"
+              id="repetitions"
+              value="888"
+              min="1"
+              step="1"
+            />
+          </div>
+          <div>
+            <label for="hashLevels">Number of Hash Levels:</label>
+            <input type="number" id="hashLevels" value="888" min="0" step="1" />
+          </div>
+        </div>
+
+        <button id="setFocusButton" class="button-secondary">
+          Set Focus Phrase
+        </button>
+      </div>
+
+      <!-- Status & Word Display -->
+      <div class="status-section card">
+        <div id="wordDisplay">Word:</div>
+      </div>
+
+      <!-- Interaction Area -->
+      <div class="interaction-section card">
+        <!-- Prompt/Hashing Display -->
+        <div id="promptArea" class="prompt-area">
+          Enter Focus Phrase and Settings, then click "Set Focus Phrase".
+        </div>
+        <div id="hashDisplay" class="hash-display hidden">
+          <div class="hash-container">
+            <span id="hashLabelA">Hash A:</span> <code id="hashValueA"></code>
+          </div>
+          <div class="hash-container">
+            <span id="hashLabelB">Hash B:</span> <code id="hashValueB"></code>
+          </div>
+          <small id="hashStatus" class="hash-status"></small>
+        </div>
+
+        <!-- Character Type Buttons -->
+        <div id="typeSelection" class="button-group hidden">
+          <button
+            id="typeLetter"
+            class="button-primary type-button"
+            data-type="Letter"
+          >
+            Letter
+          </button>
+          <button
+            id="typeNumber"
+            class="button-primary type-button"
+            data-type="Number"
+          >
+            Number
+          </button>
+          <button
+            id="typeSymbol"
+            class="button-primary type-button"
+            data-type="Symbol"
+          >
+            Symbol
+          </button>
+        </div>
+
+        <!-- START: ADDED Yes/No Selection -->
+        <div id="yesNoSelection" class="yes-no-group hidden">
+          <div class="yes-no-option">
+            <button
+              id="yesButton"
+              class="button-primary yes-no-button"
+              data-choice="Yes"
+            >
+              Yes?
+            </button>
+            <code id="yesHashDisplay" class="yes-no-hash"></code>
+          </div>
+          <div class="yes-no-option">
+            <button
+              id="noButton"
+              class="button-primary yes-no-button"
+              data-choice="No"
+            >
+              No?
+            </button>
+            <code id="noHashDisplay" class="yes-no-hash"></code>
+          </div>
+          <small id="yesNoHashStatus" class="hash-status"></small>
+        </div>
+        <!-- END: ADDED Yes/No Selection -->
+
+        <!-- Half Selection Buttons -->
+        <div id="halfSelection" class="button-group hidden">
+          <button
+            id="firstHalfButton"
+            class="button-primary half-button"
+            data-choice="first"
+          >
+            First Half
+          </button>
+          <button
+            id="secondHalfButton"
+            class="button-primary half-button"
+            data-choice="second"
+          >
+            Second Half
+          </button>
+        </div>
+
+        <!-- Solved Button -->
+        <div class="solved-section">
+          <button id="solvedButton" class="button-solved hidden">
+            Solved!
+          </button>
+        </div>
+
+        <!-- Result Display -->
+        <div id="resultArea" class="result-area hidden">
+          <span id="resultText"></span>
+          <button id="copyButton" class="button-small hidden">Copy</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

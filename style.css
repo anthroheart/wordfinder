@@ -1,0 +1,326 @@
+/* Google Font Import Fallback */
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap');
+
+:root {
+    --font-family-main: "Comic Sans MS", "Comic Neue", cursive; /* Added fallback */
+    --font-size-base: 16px;
+    --font-size-large: 18px;
+    --font-size-xlarge: 24px;
+    --font-size-title: 32px; /* Increased title size for web */
+    --font-size-button: 16px;
+    --font-size-hash: 13px;
+
+    --color-background: #1e1a3c;
+    --color-background-card: #2a265f; /* Slightly lighter for cards */
+    --color-foreground-label: #ffffff;
+    --color-foreground-entry: #ffffff;
+    --color-foreground-title: #00ccff;
+    --color-foreground-accent: #ffcc00;
+    --color-foreground-secondary: #00ccff;
+    --color-foreground-button: var(--color-background);
+    --color-button-primary-bg: var(--color-foreground-accent);
+    --color-button-secondary-bg: var(--color-foreground-secondary);
+    --color-button-solved-bg: #ff3366;
+    --color-button-disabled-bg: #5a5580;
+    --color-button-disabled-fg: #a0a0a0;
+    --color-border: var(--color-foreground-secondary);
+    --color-highlight: var(--color-foreground-accent);
+    --color-hash-text: var(--color-foreground-accent);
+    --color-error: #ff4444;
+
+    --pad-small: 5px;
+    --pad-medium: 10px;
+    --pad-large: 15px;
+    --pad-xlarge: 20px;
+}
+
+body {
+    font-family: var(--font-family-main);
+    background-color: var(--color-background);
+    color: var(--color-foreground-label);
+    margin: 0;
+    padding: var(--pad-large);
+    font-size: var(--font-size-base);
+    display: flex;
+    justify-content: center; /* Center container horizontally */
+    min-height: 100vh;
+}
+
+.container {
+    background-color: var(--color-background); /* Or slightly different if needed */
+    padding: var(--pad-large);
+    max-width: 750px; /* Limit width */
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: var(--pad-large); /* Spacing between sections */
+}
+
+h1#appTitle {
+    color: var(--color-foreground-title);
+    text-align: center;
+    margin-bottom: var(--pad-xlarge);
+    font-size: var(--font-size-title);
+    font-weight: bold;
+}
+
+.card {
+    background-color: var(--color-background-card);
+    padding: var(--pad-large);
+    border-radius: 8px;
+    border: 1px solid var(--color-border);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Input Section */
+.input-section label {
+    display: block;
+    margin-bottom: var(--pad-small);
+    color: var(--color-foreground-title);
+    font-weight: bold;
+}
+
+.input-section textarea,
+.input-section input[type="number"] {
+    width: 100%;
+    padding: var(--pad-medium);
+    margin-bottom: var(--pad-large);
+    background-color: var(--color-background); /* Darker background for input */
+    color: var(--color-foreground-entry);
+    border: 2px solid var(--color-border);
+    border-radius: 4px;
+    font-family: var(--font-family-main);
+    font-size: var(--font-size-large);
+    box-sizing: border-box;
+    resize: vertical; /* Allow textarea resize */
+}
+.input-section textarea:focus,
+.input-section input[type="number"]:focus {
+      outline: none;
+      border-color: var(--color-highlight);
+      box-shadow: 0 0 5px var(--color-highlight);
+}
+.input-section textarea:disabled,
+.input-section input[type="number"]:disabled {
+    background-color: #3a356f; /* Slightly different disabled background */
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.config-section {
+    display: flex;
+    justify-content: space-around; /* Space out config items */
+    gap: var(--pad-large);
+    margin-bottom: var(--pad-large);
+}
+.config-section div {
+    flex: 1; /* Allow items to grow */
+}
+.config-section input[type="number"] {
+     width: auto; /* Allow number inputs to size naturally */
+     min-width: 80px;
+     text-align: center;
+}
+
+/* Status Section */
+.status-section {
+    text-align: center;
+}
+#wordDisplay {
+    font-size: var(--font-size-xlarge);
+    color: var(--color-foreground-accent);
+    font-weight: bold;
+    min-height: 3em; /* Ensure space even when empty */
+    padding: var(--pad-medium);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.4;
+}
+
+/* Interaction Section */
+#promptArea {
+    min-height: 4em; /* Ensure space for prompt text */
+    font-size: var(--font-size-base);
+    line-height: 1.5;
+    white-space: pre-wrap; /* Respect newlines in prompt */
+    margin-bottom: var(--pad-medium);
+}
+.hash-display {
+    margin-top: var(--pad-medium);
+    padding: var(--pad-medium);
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+}
+.hash-container {
+    margin-bottom: var(--pad-small);
+    display: flex;
+    align-items: baseline;
+    gap: var(--pad-small);
+}
+.hash-container span { /* Label */
+    font-weight: bold;
+    color: var(--color-foreground-secondary);
+    min-width: 60px;
+    display: inline-block;
+}
+.hash-container code { /* Hash value */
+    font-family: monospace;
+    font-size: var(--font-size-hash);
+    color: var(--color-hash-text);
+    word-break: break-all; /* Allow long hashes to wrap */
+    flex-grow: 1;
+}
+.hash-status {
+    font-style: italic;
+    color: var(--color-foreground-secondary);
+    font-size: 0.9em;
+    display: block;
+    margin-top: var(--pad-small);
+}
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: var(--pad-medium);
+    margin-top: var(--pad-large);
+    margin-bottom: var(--pad-large);
+    flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+}
+
+button {
+    padding: var(--pad-medium) var(--pad-large);
+    font-family: var(--font-family-main);
+    font-size: var(--font-size-button);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    min-width: 120px; /* Ensure buttons have minimum width */
+    text-align: center;
+}
+button:hover {
+    opacity: 0.9;
+}
+button:active {
+    transform: scale(0.98);
+}
+button:disabled {
+    background-color: var(--color-button-disabled-bg);
+    color: var(--color-button-disabled-fg);
+    cursor: not-allowed;
+    transform: none;
+}
+
+.button-primary {
+    background-color: var(--color-button-primary-bg);
+    color: var(--color-foreground-button);
+}
+.button-secondary {
+    background-color: var(--color-button-secondary-bg);
+    color: var(--color-foreground-button);
+}
+.button-solved {
+    background-color: var(--color-button-solved-bg);
+    color: var(--color-foreground-label);
+    font-weight: bold;
+}
+.button-small {
+    padding: var(--pad-small) var(--pad-medium);
+    font-size: 0.9em;
+    min-width: auto;
+}
+
+.solved-section {
+    text-align: center;
+    margin-top: var(--pad-large);
+}
+
+.result-area {
+    margin-top: var(--pad-large);
+    padding: var(--pad-medium);
+    background-color: var(--color-background); /* Match input background */
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    color: var(--color-foreground-title);
+    font-size: var(--font-size-large);
+    text-align: center;
+    display: flex; /* Align text and button */
+    justify-content: center;
+    align-items: center;
+    gap: var(--pad-medium);
+}
+
+.hidden {
+    display: none !important; /* Use important to override other display properties */
+}
+
+/* Basic responsiveness */
+@media (max-width: 600px) {
+    .config-section {
+        flex-direction: column;
+        align-items: center;
+    }
+    body {
+        padding: var(--pad-small);
+    }
+    .container {
+        padding: var(--pad-medium);
+    }
+     h1#appTitle {
+        font-size: calc(var(--font-size-title) * 0.8);
+    }
+    button {
+        font-size: calc(var(--font-size-button) * 0.9);
+        padding: calc(var(--pad-medium) * 0.8) calc(var(--pad-large) * 0.8);
+    }
+}
+
+/* --- START: Added Styles for Yes/No Section --- */
+
+.yes-no-group {
+    display: flex;
+    flex-direction: column; /* Stack Yes and No lines */
+    align-items: stretch; /* Stretch items horizontally */
+    gap: var(--pad-medium); /* Space between Yes and No lines */
+    margin-top: var(--pad-large);
+    margin-bottom: var(--pad-large);
+    padding: var(--pad-medium);
+    background-color: rgba(0, 0, 0, 0.15); /* Subtle background */
+    border-radius: 4px;
+}
+
+.yes-no-option {
+    display: flex;
+    align-items: center; /* Align button and hash vertically */
+    gap: var(--pad-medium); /* Space between button and hash */
+}
+
+.yes-no-button {
+    /* Using button-primary style by default */
+    flex-shrink: 0; /* Prevent button from shrinking */
+    min-width: 80px; /* Smaller min-width than type buttons */
+}
+
+.yes-no-hash {
+    font-family: monospace;
+    font-size: var(--font-size-hash);
+    color: var(--color-hash-text);
+    word-break: break-all; /* Allow long hashes to wrap */
+    line-height: 1.3; /* Adjust line height for wrap */
+    flex-grow: 1; /* Allow hash display to take remaining space */
+    text-align: left; /* Align hash text left */
+}
+/* Optional: Style for the status message specific to Yes/No hashes */
+#yesNoHashStatus {
+    font-style: italic;
+    color: var(--color-foreground-secondary);
+    font-size: 0.9em;
+    text-align: center;
+    margin-top: var(--pad-small);
+}
+
+/* --- END: Added Styles for Yes/No Section --- */
+
+/* Existing Styles Below... */
+/* ... (keep all your existing CSS rules) ... */
